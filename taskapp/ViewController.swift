@@ -8,10 +8,14 @@
 
 import UIKit
 import RealmSwift
+import UserNotifications
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    @IBOutlet weak var SearchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     let realm = try! Realm()
+    //var searchResult = [String]()//検索用
+    //var searchController = UISearchController(searchResultsController: nil)//検索用
     let taskArray = try! Realm().objects(Task.self).sorted(byProperty: "date", ascending:false)
 
     override func viewDidLoad() {
@@ -19,7 +23,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         // Do any additional setup after loading the view, typically from a nib.
         tableView.delegate = self
         tableView.dataSource = self
-    }
+        //検索用↓
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -62,15 +66,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     // Delete ボタンが押された時に呼ばれるメソッド
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == UITableViewCellEditingStyle.delete {
+    //func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        //if editingStyle == UITableViewCellEditingStyle.delete {
             // データベースから削除する  // ←以降追加する
-            try! realm.write {
-                self.realm.delete(self.taskArray[indexPath.row])
-                tableView.deleteRows(at: [indexPath as IndexPath], with: UITableViewRowAnimation.fade)
-            }
-        }
-    }
+            //try! realm.write {
+               // self.realm.delete(self.taskArray[indexPath.row])
+                //tableView.deleteRows(at: [indexPath as IndexPath], with: UITableViewRowAnimation.fade)
+            //}
+        //}
+    //}
 
     // segue で画面遷移するに呼ばれる
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
@@ -94,6 +98,33 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
+    }
+    // Delete ボタンが押された時に呼ばれるメソッド
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.delete {
+            
+            // 削除されたタスクを取得する
+            let task = self.taskArray[indexPath.row]
+            
+            // ローカル通知をキャンセルする
+            let center = UNUserNotificationCenter.current()
+            center.removePendingNotificationRequests(withIdentifiers: [String(task.id)])
+            
+            // データベースから削除する
+            try! realm.write {
+                self.realm.delete(task)
+                tableView.deleteRows(at: [indexPath as IndexPath], with: UITableViewRowAnimation.fade)
+            }
+            
+            // 未通知のローカル通知一覧をログ出力
+            center.getPendingNotificationRequests { (requests: [UNNotificationRequest]) in
+                for request in requests {
+                    print("/---------------")
+                    print(request)
+                    print("---------------/")
+                }
+            }
+        }
     }
 
 

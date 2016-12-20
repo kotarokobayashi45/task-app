@@ -52,10 +52,17 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="x0A-xa-2zY">
+                                <rect key="frame" x="0.0" y="72" width="375" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="x0A-xa-2zY" secondAttribute="trailing" id="4BE-r4-LVy"/>
                             <constraint firstItem="Ef8-bg-eGN" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Bpd-FF-bLg"/>
+                            <constraint firstItem="x0A-xa-2zY" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="IK6-CN-B6P"/>
+                            <constraint firstItem="x0A-xa-2zY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="QcA-Nb-K66"/>
                             <constraint firstAttribute="trailing" secondItem="Ef8-bg-eGN" secondAttribute="trailing" id="YJu-qJ-eNm"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Ef8-bg-eGN" secondAttribute="bottom" id="evp-s3-cF3"/>
                             <constraint firstItem="Ef8-bg-eGN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="gnC-g1-RZA"/>
@@ -69,6 +76,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="SearchBar" destination="x0A-xa-2zY" id="6N2-nc-byc"/>
                         <outlet property="tableView" destination="Ef8-bg-eGN" id="Nmf-be-gMC"/>
                         <segue destination="rGM-s0-EYc" kind="show" identifier="cellSegue" id="gzC-4L-WNu"/>
                     </connections>
@@ -107,8 +115,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lLj-gV-Kvm">
-                                <rect key="frame" x="16" y="74" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="タイトル" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lLj-gV-Kvm">
+                                <rect key="frame" x="16" y="74" width="70" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -119,8 +127,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZNE-M0-zUc">
-                                <rect key="frame" x="16" y="145" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="内容" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZNE-M0-zUc">
+                                <rect key="frame" x="16" y="145" width="35" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -144,6 +152,13 @@
                                     <!--2016-12-10 02:21:19 +0000-->
                                 </date>
                             </datePicker>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="カテゴリーを入力してください" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0ro-Uw-TAV">
+                                <rect key="frame" x="32" y="434" width="310" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -163,14 +178,15 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="contentsTexView" destination="9GM-8h-vmC" id="gqI-az-nKJ"/>
+                        <outlet property="KateTextField" destination="0ro-Uw-TAV" id="3BL-JV-Za8"/>
+                        <outlet property="contentsTextView" destination="9GM-8h-vmC" id="vP7-aV-ZZC"/>
                         <outlet property="datePicker" destination="SFU-km-s8b" id="1mJ-1s-ARE"/>
                         <outlet property="titleTextField" destination="g7A-Tu-X8j" id="NFt-91-Rug"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HKF-MV-Mr8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1665" y="38"/>
+            <point key="canvasLocation" x="1664.8" y="37.331334332833585"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

@@ -6,7 +6,7 @@
 //  Copyright © 2016年 kotarou.kobayashi. All rights reserved.
 //
 
-import UIKit
+import RealmSwift
 
 class Task: Object {
     // 管理用 ID。プライマリーキー
@@ -26,6 +26,8 @@ class Task: Object {
      */
     override static func primaryKey() -> String? {
         return "id"
+        
     }
+    dynamic var category:String = ""
 
 }
