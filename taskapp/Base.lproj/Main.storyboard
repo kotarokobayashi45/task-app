@@ -30,18 +30,18 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kzS-bC-Tr4" id="qEg-qz-oIx">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3Tl-Fl-oAf">
-                                                    <rect key="frame" x="15" y="4" width="34" height="21"/>
+                                                    <rect key="frame" x="15" y="5" width="33.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5KH-jp-Tyu">
-                                                    <rect key="frame" x="15" y="25" width="44" height="15"/>
+                                                    <rect key="frame" x="15" y="25.5" width="44" height="14.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
@@ -152,9 +152,8 @@
                                     <!--2016-12-10 02:21:19 +0000-->
                                 </date>
                             </datePicker>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="カテゴリーを入力してください" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0ro-Uw-TAV">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="カテゴリーを入力してください" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0ro-Uw-TAV">
                                 <rect key="frame" x="32" y="434" width="310" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -162,18 +161,21 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="0ro-Uw-TAV" firstAttribute="top" secondItem="SFU-km-s8b" secondAttribute="bottom" constant="8" id="8Uh-JG-0XC"/>
                             <constraint firstAttribute="trailing" secondItem="SFU-km-s8b" secondAttribute="trailing" id="8sg-gH-adq"/>
                             <constraint firstItem="ZNE-M0-zUc" firstAttribute="top" secondItem="g7A-Tu-X8j" secondAttribute="bottom" constant="10" id="FpA-9z-cAz"/>
                             <constraint firstItem="lLj-gV-Kvm" firstAttribute="leading" secondItem="HWB-Sl-0oN" secondAttribute="leadingMargin" id="Jgh-NB-aP6"/>
                             <constraint firstItem="SFU-km-s8b" firstAttribute="top" secondItem="9GM-8h-vmC" secondAttribute="bottom" constant="10" id="QMq-LJ-uMZ"/>
                             <constraint firstItem="g7A-Tu-X8j" firstAttribute="top" secondItem="lLj-gV-Kvm" secondAttribute="bottom" constant="10" id="WrO-T9-Cx4"/>
                             <constraint firstItem="SFU-km-s8b" firstAttribute="leading" secondItem="HWB-Sl-0oN" secondAttribute="leading" id="Z7F-zQ-tTc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="0ro-Uw-TAV" secondAttribute="trailing" constant="17" id="chh-0e-W24"/>
                             <constraint firstItem="ZNE-M0-zUc" firstAttribute="leading" secondItem="HWB-Sl-0oN" secondAttribute="leadingMargin" id="csk-Xu-4hu"/>
                             <constraint firstAttribute="trailingMargin" secondItem="9GM-8h-vmC" secondAttribute="trailing" id="dgD-zA-wmZ"/>
                             <constraint firstItem="g7A-Tu-X8j" firstAttribute="leading" secondItem="HWB-Sl-0oN" secondAttribute="leading" id="j3X-1i-3lf"/>
                             <constraint firstItem="9GM-8h-vmC" firstAttribute="leading" secondItem="HWB-Sl-0oN" secondAttribute="leadingMargin" id="jvu-fI-Gum"/>
                             <constraint firstAttribute="trailing" secondItem="g7A-Tu-X8j" secondAttribute="trailing" id="pMg-Tk-ZT2"/>
                             <constraint firstItem="lLj-gV-Kvm" firstAttribute="top" secondItem="9SW-VZ-Dgv" secondAttribute="bottom" constant="10" id="vMk-0X-aGd"/>
+                            <constraint firstItem="0ro-Uw-TAV" firstAttribute="leading" secondItem="HWB-Sl-0oN" secondAttribute="leadingMargin" constant="16" id="wTR-hH-TK6"/>
                             <constraint firstItem="9GM-8h-vmC" firstAttribute="top" secondItem="ZNE-M0-zUc" secondAttribute="bottom" constant="10" id="x9K-UB-a27"/>
                         </constraints>
                     </view>

@@ -10,13 +10,13 @@ import UIKit
 import RealmSwift
 import UserNotifications
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     @IBOutlet weak var SearchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     let realm = try! Realm()
     //var searchResult = [String]()//検索用
     //var searchController = UISearchController(searchResultsController: nil)//検索用
-    let taskArray = try! Realm().objects(Task.self).sorted(byProperty: "date", ascending:false)
+    var taskArray = try! Realm().objects(Task.self).sorted(byProperty: "date", ascending:false)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +24,16 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         tableView.delegate = self
         tableView.dataSource = self
         //検索用↓
-
+        SearchBar.delegate = self
+    }
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String){
+        let predicate = NSPredicate(format: "category BEGINSWITH %@",searchText)
+        taskArray = try! Realm().objects(Task.self).filter(predicate)
+        
+        //taskArray = try! Realm().objects(Task.self).sorted(byProperty: "date", ascending:true)
+        tableView.reloadData()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
